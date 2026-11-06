@@ -131,7 +131,3 @@ The app is a standard Next.js app, so it deploys to **Vercel** with no configura
 - **Subdomains.** Tenants are resolved from the path. Resolving from the subdomain or custom domain (`aurora.10mg.app`) would be a middleware rewrite onto the same `[tenant]` routes.
 - **Server-side paging.** Lender tables currently filter and paginate on the client. With realistic volumes, `DataTable` should move to server-driven paging and sorting.
 - **Not built:** roles beyond admin/customer (credit officer, approver limits), a document-upload step for KYC, and penalty interest on arrears.
-
-## AI usage
-
-This project was built with help from an AI coding assistant (Claude). I directed the architecture, reviewed the output, and tested the application. I'm happy to walk through and defend any part of the implementation.

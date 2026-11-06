@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { ColorField } from "@/components/forms/color-field";
 import { FormError, FormField, fieldA11y } from "@/components/forms/form-field";
 import { applyServerErrors } from "@/components/forms/apply-server-errors";
+import { PasswordInput } from "@/components/forms/password-input";
 import { PlatformHeader } from "@/components/layout/platform-header";
 import { TenantLogo } from "@/components/tenant/tenant-logo";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -206,7 +207,7 @@ export default function OnboardPage() {
                     <Input {...fieldA11y("adminEmail", errors.adminEmail?.message)} type="email" className="h-10" {...register("adminEmail")} />
                   </FormField>
                   <FormField id="adminPassword" label="Password" error={errors.adminPassword?.message}>
-                    <Input {...fieldA11y("adminPassword", errors.adminPassword?.message)} type="password" autoComplete="new-password" className="h-10" {...register("adminPassword")} />
+                    <PasswordInput {...fieldA11y("adminPassword", errors.adminPassword?.message)} autoComplete="new-password" className="h-10" {...register("adminPassword")} />
                   </FormField>
                 </div>
                 <div className="flex justify-end">

@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { KeyRound } from "lucide-react";
 import { FormError, FormField, fieldA11y } from "@/components/forms/form-field";
 import { applyServerErrors } from "@/components/forms/apply-server-errors";
+import { PasswordInput } from "@/components/forms/password-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -72,7 +73,7 @@ export function LoginForm() {
           <Input {...fieldA11y("email", errors.email?.message)} type="email" autoComplete="email" className="h-10" {...register("email")} />
         </FormField>
         <FormField id="password" label="Password" error={errors.password?.message}>
-          <Input {...fieldA11y("password", errors.password?.message)} type="password" autoComplete="current-password" className="h-10" {...register("password")} />
+          <PasswordInput {...fieldA11y("password", errors.password?.message)} autoComplete="current-password" className="h-10" {...register("password")} />
         </FormField>
         <Button type="submit" size="lg" className="h-10 w-full" disabled={login.isPending}>
           {login.isPending ? "Signing in…" : audience === "staff" ? "Sign in to lender console" : "Sign in"}

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormError, FormField, fieldA11y } from "@/components/forms/form-field";
 import { applyServerErrors } from "@/components/forms/apply-server-errors";
+import { PasswordInput } from "@/components/forms/password-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTenant } from "@/features/tenants/tenant-context";
@@ -38,7 +39,11 @@ export function RegisterForm() {
 
   const text = (name: keyof RegisterInput, label: string, type = "text", autoComplete?: string) => (
     <FormField id={name} label={label} error={errors[name]?.message}>
-      <Input {...fieldA11y(name, errors[name]?.message)} type={type} autoComplete={autoComplete} className="h-10" {...register(name)} />
+      {type === "password" ? (
+        <PasswordInput {...fieldA11y(name, errors[name]?.message)} autoComplete={autoComplete} className="h-10" {...register(name)} />
+      ) : (
+        <Input {...fieldA11y(name, errors[name]?.message)} type={type} autoComplete={autoComplete} className="h-10" {...register(name)} />
+      )}
     </FormField>
   );
 

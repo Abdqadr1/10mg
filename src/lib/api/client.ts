@@ -39,6 +39,11 @@ export async function apiFetch<T>(path: string, { method = "GET", body, tenant }
     throw new ApiError(0, "Network error. Check your connection and try again.");
   }
 
+  const isJson = response.headers.get("content-type")?.includes("application/json") ?? false;
+  if (!isJson) {
+    throw new ApiError(503, "The demo API isn't running in this tab. Reload the page to restart it.");
+  }
+
   const payload = (await response.json().catch(() => null)) as unknown;
   if (!response.ok) {
     const error = (payload ?? {}) as Partial<ApiErrorBody>;
