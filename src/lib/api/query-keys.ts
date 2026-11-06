@@ -1,0 +1,17 @@
+export const queryKeys = {
+  tenants: ["tenants"] as const,
+  tenant: (slug: string) => ["tenants", slug] as const,
+  lender: (slug: string) => ["tenant-data", slug, "lender"] as const,
+  dashboard: (slug: string) => [...queryKeys.lender(slug), "dashboard"] as const,
+  applications: (slug: string) => [...queryKeys.lender(slug), "applications"] as const,
+  applicationReview: (slug: string, id: string) => [...queryKeys.lender(slug), "applications", id] as const,
+  customers: (slug: string) => [...queryKeys.lender(slug), "customers"] as const,
+  customer: (slug: string, id: string) => [...queryKeys.lender(slug), "customers", id] as const,
+  loans: (slug: string) => [...queryKeys.lender(slug), "loans"] as const,
+  lenderLoan: (slug: string, id: string) => [...queryKeys.lender(slug), "loans", id] as const,
+  repayments: (slug: string) => [...queryKeys.lender(slug), "repayments"] as const,
+  portal: (slug: string) => ["tenant-data", slug, "portal"] as const,
+  overview: (slug: string) => [...queryKeys.portal(slug), "overview"] as const,
+  myLoan: (slug: string, id: string) => [...queryKeys.portal(slug), "loans", id] as const,
+  myRepayments: (slug: string) => [...queryKeys.portal(slug), "repayments"] as const,
+};
